@@ -1,0 +1,27 @@
+name: Build JobsPlugin
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: JDK 25 installieren
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+
+      - name: Plugin bauen
+        run: mvn -B clean package
+
+      - name: Jar hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: JobsPlugin
+          path: target/JobsPlugin.jar
