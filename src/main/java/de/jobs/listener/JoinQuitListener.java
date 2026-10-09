@@ -1,6 +1,7 @@
 package de.jobs.listener;
 
 import de.jobs.JobsPlugin;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -16,11 +17,15 @@ public final class JoinQuitListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        plugin.getDataManager().load(event.getPlayer().getUniqueId());
+        Player player = event.getPlayer();
+        plugin.getDataManager().load(player.getUniqueId());
+        plugin.getMoneyScoreboard().show(player);
     }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
-        plugin.getDataManager().unload(event.getPlayer().getUniqueId());
+        Player player = event.getPlayer();
+        plugin.getMoneyScoreboard().remove(player);
+        plugin.getDataManager().unload(player.getUniqueId());
     }
 }
