@@ -1,0 +1,17 @@
+name: JobsPlugin
+version: '1.0.0'
+main: de.jobs.JobsPlugin
+api-version: '26.2'
+author: Louis
+description: Job-System mit Holzfäller, Minenarbeiter, Erkunder und Farmer sowie Shops
+
+commands:
+  jobs:
+    description: Zeigt deine Jobs und dein Geld oder verwaltet die Shops
+    usage: /jobs
+    aliases: [job]
+
+permissions:
+  jobs.admin:
+    description: Darf Shops einrichten und Geld verteilen
+    default: op

@@ -1,0 +1,115 @@
+# ==========================================================
+#  JobsPlugin - Konfiguration
+#  Zahlen sind Geld (in $) pro Aktion, vor dem Level-Bonus.
+#  Nach jeder Änderung den Server neu starten.
+# ==========================================================
+
+leveling:
+  max-level: 100          # Höchstes Level
+  xp-base: 100            # XP für Level 1 -> 2
+  xp-per-level: 50        # Zusätzliche XP pro Level (wird also immer teurer)
+  bonus-per-level: 0.02   # Pro Level +2 % Geld (Level 1 = 1.0x, Level 100 = 2.98x)
+
+# ---------- Holzfäller: Holzarten und ihr Lohn pro Block ----------
+woodcutter:
+  blocks:
+    OAK_LOG: 2.0
+    SPRUCE_LOG: 2.0
+    BIRCH_LOG: 2.0
+    JUNGLE_LOG: 2.5
+    ACACIA_LOG: 2.5
+    DARK_OAK_LOG: 3.0
+    MANGROVE_LOG: 3.0
+    CHERRY_LOG: 3.5
+    PALE_OAK_LOG: 4.0
+
+# ---------- Minenarbeiter: Steine und Erze ----------
+miner:
+  blocks:
+    STONE: 0.5
+    DEEPSLATE: 0.5
+    COAL_ORE: 1.5
+    DEEPSLATE_COAL_ORE: 1.5
+    COPPER_ORE: 2.0
+    DEEPSLATE_COPPER_ORE: 2.0
+    IRON_ORE: 3.0
+    DEEPSLATE_IRON_ORE: 3.0
+    REDSTONE_ORE: 3.0
+    DEEPSLATE_REDSTONE_ORE: 3.0
+    LAPIS_ORE: 4.0
+    DEEPSLATE_LAPIS_ORE: 4.0
+    NETHER_GOLD_ORE: 3.0
+    GOLD_ORE: 5.0
+    DEEPSLATE_GOLD_ORE: 5.0
+    DIAMOND_ORE: 10.0
+    DEEPSLATE_DIAMOND_ORE: 10.0
+    EMERALD_ORE: 12.0
+    DEEPSLATE_EMERALD_ORE: 12.0
+
+# ---------- Farmer ----------
+farmer:
+  plant:              # Lohn beim Anpflanzen
+    WHEAT: 0.5
+    CARROTS: 0.5
+    POTATOES: 0.5
+    BEETROOTS: 0.5
+    NETHER_WART: 0.8
+    MELON_STEM: 0.3
+    PUMPKIN_STEM: 0.3
+  harvest:            # Lohn beim Ernten (nur ausgewachsen bzw. natürliche Melonen/Kürbisse)
+    WHEAT: 1.5
+    CARROTS: 1.5
+    POTATOES: 1.5
+    BEETROOTS: 1.5
+    NETHER_WART: 2.0
+    MELON: 1.0
+    PUMPKIN: 1.0
+  tame: 5.0           # Lohn für ein gezähmtes Tier
+  kill-default: 1.0   # Standard-Lohn für getötete Tiere
+  kill:               # Abweichende Werte pro Tier
+    COW: 1.5
+    PIG: 1.0
+    SHEEP: 1.0
+    CHICKEN: 0.5
+    RABBIT: 1.0
+    HORSE: 3.0
+    LLAMA: 2.0
+
+# ---------- Erkunder ----------
+explorer:
+  per-100-blocks: 1.0   # Lohn pro 100 zurückgelegte Blöcke
+  new-chunk: 1.0        # Lohn für jeden Chunk (16x16), den der Spieler zum ersten Mal betritt
+
+# ---------- Shops ----------
+# Preise sind Platzhalter. Kategorien werden mit /jobs setshop [name] an eine Truhe gebunden.
+shop:
+  categories:
+    erz:
+      title: "<gold>Erz-Shop</gold>"
+      items:
+        COAL: 5
+        RAW_COPPER: 15
+        RAW_IRON: 30
+        RAW_GOLD: 60
+        DIAMOND: 250
+    holz:
+      title: "<dark_green>Holz-Shop</dark_green>"
+      items:
+        OAK_LOG: 6
+        SPRUCE_LOG: 6
+        BIRCH_LOG: 6
+        JUNGLE_LOG: 8
+        ACACIA_LOG: 8
+        DARK_OAK_LOG: 10
+        MANGROVE_LOG: 10
+        CHERRY_LOG: 12
+        PALE_OAK_LOG: 12
+    essen:
+      title: "<yellow>Essen-Shop</yellow>"
+      items:
+        BREAD: 4
+        APPLE: 3
+        COOKED_BEEF: 8
+        COOKED_PORKCHOP: 8
+        COOKED_CHICKEN: 6
+        GOLDEN_CARROT: 40
