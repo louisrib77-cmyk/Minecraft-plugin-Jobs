@@ -28,6 +28,7 @@ public final class JobsPlugin extends JavaPlugin {
     private ShopManager shopManager;
     private ShopGui shopGui;
     private NamespacedKey spawnerKey;
+    private MoneyScoreboard moneyScoreboard;
 
     @Override
     public void onEnable() {
@@ -39,6 +40,7 @@ public final class JobsPlugin extends JavaPlugin {
         placedBlocks = new PlacedBlockTracker(this);
         shopManager = new ShopManager(this);
         shopGui = new ShopGui(this);
+        moneyScoreboard = new MoneyScoreboard(this);
         spawnerKey = new NamespacedKey(this, "spawner_spawned");
 
         PluginManager pm = getServer().getPluginManager();
@@ -58,10 +60,14 @@ public final class JobsPlugin extends JavaPlugin {
         // Spieler, die schon online sind (z. B. nach einem Neuladen des Plugins), laden
         for (Player player : getServer().getOnlinePlayers()) {
             dataManager.load(player.getUniqueId());
+            moneyScoreboard.show(player);
         }
 
         // Autosave alle 5 Minuten (6000 Ticks)
         getServer().getScheduler().runTaskTimer(this, dataManager::saveAll, 6000L, 6000L);
+
+        // Geld-Rangliste jede Sekunde aktualisieren (20 Ticks)
+        getServer().getScheduler().runTaskTimer(this, moneyScoreboard::updateAll, 20L, 20L);
 
         getLogger().info("JobsPlugin aktiviert.");
     }
@@ -80,6 +86,7 @@ public final class JobsPlugin extends JavaPlugin {
     public ShopManager getShopManager() { return shopManager; }
     public ShopGui getShopGui() { return shopGui; }
     public NamespacedKey getSpawnerKey() { return spawnerKey; }
+    public MoneyScoreboard getMoneyScoreboard() { return moneyScoreboard; }
 
     /** Geldbetrag mit zwei Nachkommastellen, z. B. 12,50 */
     public static String money(double value) {
